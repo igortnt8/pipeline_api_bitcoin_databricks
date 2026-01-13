@@ -1,0 +1,330 @@
+{
+  "datasets": [
+    {
+      "name": "965646c0",
+      "displayName": "preco_min",
+      "queryLines": [
+        "SELECT\r\n",
+        "  ValorBrl  AS min_price,\r\n",
+        "  timestamp AS min_timestamp\r\n",
+        "FROM pipeline_api_bitcoin.bitcoin_data.dados_bitcoin\r\n",
+        "  ORDER BY ValorBrl ASC, timestamp DESC\r\n",
+        "  LIMIT 1"
+      ]
+    },
+    {
+      "name": "e943d30d",
+      "displayName": "preco_max",
+      "queryLines": [
+        "SELECT\r\n",
+        "  ValorBrl  AS max_price,\r\n",
+        "  timestamp AS max_timestamp\r\n",
+        "FROM pipeline_api_bitcoin.bitcoin_data.dados_bitcoin\r\n",
+        "  ORDER BY ValorBrl DESC, timestamp DESC\r\n",
+        "  LIMIT 1"
+      ]
+    },
+    {
+      "name": "c4a5f619",
+      "displayName": "ultimo_preco",
+      "queryLines": [
+        "SELECT\r\n",
+        "  ValorBrl  AS last_price,\r\n",
+        "  timestamp AS last_timestamp\r\n",
+        "FROM pipeline_api_bitcoin.bitcoin_data.dados_bitcoin\r\n",
+        "  ORDER BY timestamp DESC\r\n",
+        "  LIMIT 1"
+      ]
+    },
+    {
+      "name": "9fbba2ea",
+      "displayName": "total_valores_registrados",
+      "queryLines": [
+        "SELECT\r\n",
+        "  timestamp,\r\n",
+        "  ValorBrl  \r\n",
+        "FROM pipeline_api_bitcoin.bitcoin_data.dados_bitcoin\r\n",
+        "  ORDER BY timestamp "
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "d8c0eb4a",
+      "displayName": "Dashboard",
+      "layout": [
+        {
+          "widget": {
+            "name": "fa136584",
+            "multilineTextboxSpec": {
+              "lines": [
+                "Ultima cotação"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "72d04838",
+            "multilineTextboxSpec": {
+              "lines": [
+                "Maior cotação"
+              ]
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "1f832daf",
+            "multilineTextboxSpec": {
+              "lines": [
+                "Menor cotação"
+              ]
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "c07bb3e7",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "c4a5f619",
+                  "fields": [
+                    {
+                      "name": "last_timestamp",
+                      "expression": "`last_timestamp`"
+                    },
+                    {
+                      "name": "last_price",
+                      "expression": "`last_price`"
+                    }
+                  ],
+                  "disaggregated": true,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "`last_timestamp`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "last_price",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "none",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                },
+                "period": {
+                  "fieldName": "last_timestamp"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "bcf90936",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e943d30d",
+                  "fields": [
+                    {
+                      "name": "max_timestamp",
+                      "expression": "`max_timestamp`"
+                    },
+                    {
+                      "name": "max_price",
+                      "expression": "`max_price`"
+                    }
+                  ],
+                  "disaggregated": true,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "`max_timestamp`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "max_price",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "none",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                },
+                "period": {
+                  "fieldName": "max_timestamp"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "b84507f9",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "965646c0",
+                  "fields": [
+                    {
+                      "name": "min_timestamp",
+                      "expression": "`min_timestamp`"
+                    },
+                    {
+                      "name": "min_price",
+                      "expression": "`min_price`"
+                    }
+                  ],
+                  "disaggregated": true,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "`min_timestamp`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "min_price",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "none",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                },
+                "period": {
+                  "fieldName": "min_timestamp"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "bfbbdf6c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9fbba2ea",
+                  "fields": [
+                    {
+                      "name": "timestamp",
+                      "expression": "`timestamp`"
+                    },
+                    {
+                      "name": "ValorBrl",
+                      "expression": "`ValorBrl`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "timestamp",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "ValorBrl",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 6,
+            "height": 7
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

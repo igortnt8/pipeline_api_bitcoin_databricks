@@ -4,14 +4,20 @@
 
 Esse projeto tem o objetivo criar um pipeline completo que vai extrair os dados de APIs transforma e armazena em Delta Tables, e cria um dashboard interativo. Além de explorar o poder do Databricks
 
-## Ferramentas usadas
+## 🔧 Ferramentas utilizadas
 
-Python 3.8+
-Databricks
-API Coinbase
-API CurrencyFreaks
-requests
-pyspark
-datetime
+**Python 3.8+**
+
+**Databricks**
+
+**API Coinbase**
+
+**API CurrencyFreaks**
+
+**requests**
+
+**pyspark**
+
+**datetime**
 
 ## Arquitetura do projeto

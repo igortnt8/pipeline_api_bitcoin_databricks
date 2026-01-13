@@ -4,7 +4,7 @@
 
 Esse projeto tem o objetivo criar um pipeline completo que vai extrair os dados de APIs transforma e armazena em Delta Tables, e cria um dashboard interativo. Além de explorar o poder do Databricks
 
-## Ferramentas utilizadas
+## cisas
 
 Python 3.8+
 Databricks
